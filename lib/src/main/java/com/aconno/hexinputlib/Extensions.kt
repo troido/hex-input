@@ -13,6 +13,7 @@ fun Activity.setContentViewWithHexKeyboardAutoAdded(layoutResourceId : Int, wrap
     val activityMainContent= if(wrapContentInScrollView) {
         inflatedLayout.layoutParams = ViewGroup.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT,ViewGroup.LayoutParams.WRAP_CONTENT)
         ScrollView(this).apply {
+            id = View.generateViewId()
             addView(inflatedLayout)
         }
     } else {
