@@ -1,3 +1,9 @@
 <resources>
     <string name="app_name">hex-input</string>
+    <string name="standard_text_input">Standard text input</string>
+    <string name="another_hex_input">Another hex input</string>
+    <string name="simple_hex_input">Simple hex input</string>
+    <string name="demo_hex_input">Demo hex input</string>
+    <string name="hex_formatter">Hex formatter:</string>
+    <string name="hex_values_limit">Hex values limit</string>
 </resources>
