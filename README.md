@@ -63,7 +63,7 @@ override fun onBackPressed() {
 ```
 
 ### Formatters
-Set a hex formatter to a `HexEditText` view. If you don't like the default formatter, you can use some other formatter or even implement a custom one. To set a hex formatter to a `HexEditText` view, use `HexEditText.setFormatter()` method. The easiest way to get an instance of one of the formatters contained in the library is to use `HexFormatters.getFormatter()` method. Here is an example:
+You can set a hex formatter to a `HexEditText` view. If you don't like the default formatter, you can use some other formatter or even implement a custom one. To set a hex formatter to a `HexEditText` view, use `HexEditText.setFormatter()` method. The easiest way to get an instance of one of the formatters contained in the library is to use `HexFormatters.getFormatter()` method. Here is an example:
 
 ```
 val formatter = HexFormatters.getFormatter(HexFormatters.FormatterType.BYTE_PAIRS_HEX_FORMATTER)
@@ -77,7 +77,7 @@ Or you can achieve the same thing by setting the formatter in an xml file, like 
     android:id="@+id/demo_hex_input"
     android:layout_width="match_parent"
     android:layout_height="wrap_content" 
-	app:formatter="byte_pairs_hex_formatter" />
+    app:formatter="byte_pairs_hex_formatter" />
 ```
 
 If you want to implement a custom formatter, you can do this by either implementing `HexFormatter` interface or by extending some of the formatters contained in the library. For more information, read `HexFormatter` interface documentation.
