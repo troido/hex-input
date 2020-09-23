@@ -1,4 +1,4 @@
-package com.troido.ui.editor
+package com.troido.hexinput.ui.editor
 
 interface IHexEditView {
     fun updateContent(text : String)

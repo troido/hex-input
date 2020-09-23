@@ -1,4 +1,4 @@
-package com.troido.formatter
+package com.troido.hexinput.formatter
 
 interface HexFormatter {
     fun format(values : List<Char>) : String

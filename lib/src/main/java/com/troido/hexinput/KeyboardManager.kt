@@ -1,11 +1,11 @@
-package com.troido
+package com.troido.hexinput
 
 import android.app.Activity
 import android.os.Handler
 import android.view.View
 import android.view.ViewGroup
 import android.view.inputmethod.InputMethodManager
-import com.troido.ui.keyboard.BaseHexKeyboardView
+import com.troido.hexinput.ui.keyboard.BaseHexKeyboardView
 import java.lang.IllegalStateException
 
 object KeyboardManager {
@@ -42,7 +42,9 @@ object KeyboardManager {
             if(System.currentTimeMillis() - keyboardHideEventTime > KEYBOARD_REAPPEARANCE_TIME_THRESHOLD) {
                 Handler().postDelayed({
                     hexKeyboardView.visibility = View.VISIBLE
-                }, SHOW_KEYBOARD_DELAY_MILLIS)
+                },
+                    SHOW_KEYBOARD_DELAY_MILLIS
+                )
             } else {
                 hexKeyboardView.visibility = View.VISIBLE
             }

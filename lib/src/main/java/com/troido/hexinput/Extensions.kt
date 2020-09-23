@@ -1,11 +1,12 @@
-package com.troido
+package com.troido.hexinput
 
+import android.R
 import android.app.Activity
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ScrollView
 import androidx.constraintlayout.widget.ConstraintSet
-import com.troido.ui.keyboard.HexKeyboardView
+import com.troido.hexinput.ui.keyboard.HexKeyboardView
 
 fun Activity.setContentViewWithHexKeyboardAutoAdded(layoutResourceId : Int, wrapContentInScrollView : Boolean = false) {
     val inflatedLayout = this.layoutInflater.inflate(layoutResourceId,null,false)
@@ -51,7 +52,8 @@ fun Activity.setContentViewWithHexKeyboardAutoAdded(layoutResourceId : Int, wrap
 }
 
 fun Activity.handleBackPressedWithHexKeyboardInContentView() {
-    val hexKeyboardView = KeyboardManager.findHexKeyboardView(findViewById(android.R.id.content))
+    val hexKeyboardView =
+        KeyboardManager.findHexKeyboardView(findViewById(R.id.content))
     if(hexKeyboardView.visibility == View.VISIBLE) {
         KeyboardManager.hideHexKeyboard(hexKeyboardView)
     } else {

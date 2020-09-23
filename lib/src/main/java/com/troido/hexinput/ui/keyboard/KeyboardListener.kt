@@ -1,4 +1,4 @@
-package com.troido.ui.keyboard
+package com.troido.hexinput.ui.keyboard
 
 interface KeyboardListener {
     fun onValueTyped(value : Char)

@@ -1,6 +1,6 @@
-package com.troido.model
+package com.troido.hexinput.model
 
-import com.troido.HexUtils
+import com.troido.hexinput.HexUtils
 
 class HexContentModel : HexContentObservable() {
     private val values : MutableList<Char> = mutableListOf()

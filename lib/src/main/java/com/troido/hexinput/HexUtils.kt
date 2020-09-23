@@ -1,4 +1,4 @@
-package com.troido
+package com.troido.hexinput
 
 import kotlin.math.ceil
 
@@ -11,7 +11,10 @@ object HexUtils {
             val byte = if(i == hexValues.lastIndex) {
                 hexToByte('0', hexValues[i])
             } else {
-                hexToByte(hexValues[i], hexValues[i + 1])
+                hexToByte(
+                    hexValues[i],
+                    hexValues[i + 1]
+                )
             }
             bytes[i/2] = byte
         }
