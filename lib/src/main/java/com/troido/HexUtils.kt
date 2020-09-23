@@ -1,4 +1,4 @@
-package com.aconno.hexinputlib
+package com.troido
 
 import kotlin.math.ceil
 
@@ -9,9 +9,9 @@ object HexUtils {
         val bytes = ByteArray(ceil(hexValues.size/2f).toInt())
         for(i in hexValues.indices step 2) {
             val byte = if(i == hexValues.lastIndex) {
-                hexToByte('0',hexValues[i])
+                hexToByte('0', hexValues[i])
             } else {
-                hexToByte(hexValues[i],hexValues[i+1])
+                hexToByte(hexValues[i], hexValues[i + 1])
             }
             bytes[i/2] = byte
         }
@@ -20,7 +20,9 @@ object HexUtils {
     }
 
     private fun hexToByte(higherOrderHexChar : Char, lowerOrderHexChar : Char) : Byte {
-        return (hexCharToDecimal(lowerOrderHexChar) + hexCharToDecimal(higherOrderHexChar)*16).toByte()
+        return (hexCharToDecimal(lowerOrderHexChar) + hexCharToDecimal(
+            higherOrderHexChar
+        ) *16).toByte()
     }
 
     private fun hexCharToDecimal(hexChar : Char) : Int {

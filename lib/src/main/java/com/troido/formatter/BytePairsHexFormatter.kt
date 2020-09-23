@@ -1,4 +1,4 @@
-package com.aconno.hexinputlib.formatter
+package com.troido.formatter
 
 import java.lang.StringBuilder
 import kotlin.math.min

@@ -1,18 +1,20 @@
-package com.aconno.hexinputlib
+package com.troido
 
 import android.app.Activity
 import android.os.Handler
 import android.view.View
 import android.view.ViewGroup
 import android.view.inputmethod.InputMethodManager
-import com.aconno.hexinputlib.ui.keyboard.BaseHexKeyboardView
+import com.troido.ui.keyboard.BaseHexKeyboardView
 import java.lang.IllegalStateException
 
 object KeyboardManager {
     private var keyboardHideEventTime : Long = 0
 
     fun findHexKeyboardView(viewHierarchyMember : View) : BaseHexKeyboardView {
-        return findHexKeyboardInViewHierarchy(viewHierarchyMember.rootView) ?:
+        return findHexKeyboardInViewHierarchy(
+            viewHierarchyMember.rootView
+        ) ?:
                     throw IllegalStateException(KEYBOARD_VIEW_MISSING_EXCEPTION_MESSAGE)
     }
 
@@ -21,7 +23,10 @@ object KeyboardManager {
             return root
         } else if(root is ViewGroup) {
             for(i in 0 until root.childCount) {
-                val hexKeyboard = findHexKeyboardInViewHierarchy(root.getChildAt(i))
+                val hexKeyboard =
+                    findHexKeyboardInViewHierarchy(
+                        root.getChildAt(i)
+                    )
                 if(hexKeyboard != null) {
                     return hexKeyboard
                 }
@@ -46,7 +51,11 @@ object KeyboardManager {
     }
 
     fun showHexKeyboard(viewRequestingKeyboard : View) {
-        showHexKeyboard(findHexKeyboardView(viewRequestingKeyboard))
+        showHexKeyboard(
+            findHexKeyboardView(
+                viewRequestingKeyboard
+            )
+        )
     }
 
     fun hideHexKeyboard(hexKeyboardView: BaseHexKeyboardView) {
@@ -55,7 +64,11 @@ object KeyboardManager {
     }
 
     fun hideHexKeyboard(viewToHideFrom: View) {
-        hideHexKeyboard(findHexKeyboardView(viewToHideFrom))
+        hideHexKeyboard(
+            findHexKeyboardView(
+                viewToHideFrom
+            )
+        )
     }
 
     fun hideSystemKeyboard(viewToHideFrom: View) {

@@ -1,4 +1,4 @@
-package com.aconno.hexinputlib.ui.editor
+package com.troido.ui.editor
 
 interface IHexEditView {
     fun updateContent(text : String)

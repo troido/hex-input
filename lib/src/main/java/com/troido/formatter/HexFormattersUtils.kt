@@ -1,6 +1,6 @@
-package com.aconno.hexinputlib.formatter
+package com.troido.formatter
 
-import com.aconno.hexinputlib.isHexChar
+import com.troido.isHexChar
 
 object HexFormattersUtils {
     private const val HEX_CHARS_PER_BYTE = 2

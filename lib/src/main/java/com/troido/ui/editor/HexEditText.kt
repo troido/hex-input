@@ -1,14 +1,14 @@
-package com.aconno.hexinputlib.ui.editor
+package com.troido.ui.editor
 
 import android.content.Context
 import android.text.Editable
 import android.text.TextWatcher
 import android.util.AttributeSet
 import android.view.View.OnFocusChangeListener
-import com.aconno.hexinputlib.HexEditController
-import com.aconno.hexinputlib.KeyboardManager
-import com.aconno.hexinputlib.formatter.HexFormatter
-import com.aconno.hexinputlib.model.HexContentModel
+import com.troido.HexEditController
+import com.troido.KeyboardManager
+import com.troido.formatter.HexFormatter
+import com.troido.model.HexContentModel
 
 class HexEditText(context: Context, attributeSet: AttributeSet) : androidx.appcompat.widget.AppCompatEditText(context,attributeSet),
     IHexEditView {
