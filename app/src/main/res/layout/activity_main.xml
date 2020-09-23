@@ -12,6 +12,7 @@
         android:layout_height="wrap_content">
 
         <com.aconno.hexinputlib.ui.editor.HexEditText
+            android:id="@+id/simple_hex_input"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:hint="@string/simple_hex_input"
@@ -37,6 +38,7 @@
         android:layout_marginTop="20dp">
 
         <com.aconno.hexinputlib.ui.editor.HexEditText
+            android:id="@+id/demo_hex_input"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:hint="@string/demo_hex_input"
