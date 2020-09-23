@@ -39,6 +39,20 @@ class MainActivity : AppCompatActivity() {
             }
         }
 
+        apply_limit.setOnClickListener {
+            val limit = hex_values_limit.text.toString()
+            val limitInt = limit.toIntOrNull() ?: Int.MAX_VALUE
+            applyLimit(limitInt)
 
+            applied_limit_value.text = if(limit.isEmpty()) {
+                getString(R.string.no_value)
+            } else {
+                limit
+            }
+        }
+    }
+
+    private fun applyLimit(limit : Int) {
+        // TODO
     }
 }

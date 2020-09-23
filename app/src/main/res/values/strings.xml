@@ -6,4 +6,7 @@
     <string name="demo_hex_input">Demo hex input</string>
     <string name="hex_formatter">Hex formatter:</string>
     <string name="hex_values_limit">Hex values limit</string>
+    <string name="apply_limit">Apply limit</string>
+    <string name="no_value">-</string>
+    <string name="applied_limit">Applied limit:</string>
 </resources>
