@@ -5,9 +5,9 @@ import android.os.Bundle
 import android.view.View
 import android.widget.AdapterView
 import android.widget.ArrayAdapter
-import com.aconno.hexinputlib.formatter.HexFormatters
-import com.aconno.hexinputlib.formatter.PlainValuesHexFormatter
-import com.aconno.hexinputlib.setContentViewWithHexKeyboardAutoAdded
+import com.troido.hexinput.formatter.HexFormatters
+import com.troido.hexinput.formatter.PlainValuesHexFormatter
+import com.troido.hexinput.setContentViewWithHexKeyboardAutoAdded
 import kotlinx.android.synthetic.main.activity_main.*
 
 class MainActivity : AppCompatActivity() {
