@@ -1,6 +1,6 @@
-package com.aconno.hexinputlib.formatter
+package com.troido.formatter
 
-import com.aconno.hexinputlib.isHexChar
+import com.troido.isHexChar
 import java.lang.StringBuilder
 
 class MacAddressHexFormatter : HexFormatter {

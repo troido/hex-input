@@ -1,11 +1,11 @@
-package com.aconno.hexinputlib
+package com.troido
 
-import com.aconno.hexinputlib.formatter.HexFormatters
-import com.aconno.hexinputlib.formatter.IncompatibleFormatException
-import com.aconno.hexinputlib.model.HexContentListener
-import com.aconno.hexinputlib.model.HexContentModel
-import com.aconno.hexinputlib.ui.editor.IHexEditView
-import com.aconno.hexinputlib.ui.keyboard.KeyboardListener
+import com.troido.formatter.HexFormatters
+import com.troido.formatter.IncompatibleFormatException
+import com.troido.model.HexContentListener
+import com.troido.model.HexContentModel
+import com.troido.ui.editor.IHexEditView
+import com.troido.ui.keyboard.KeyboardListener
 import io.reactivex.Observable
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.disposables.Disposable

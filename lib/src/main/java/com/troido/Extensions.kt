@@ -1,11 +1,11 @@
-package com.aconno.hexinputlib
+package com.troido
 
 import android.app.Activity
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ScrollView
 import androidx.constraintlayout.widget.ConstraintSet
-import com.aconno.hexinputlib.ui.keyboard.HexKeyboardView
+import com.troido.ui.keyboard.HexKeyboardView
 
 fun Activity.setContentViewWithHexKeyboardAutoAdded(layoutResourceId : Int, wrapContentInScrollView : Boolean = false) {
     val inflatedLayout = this.layoutInflater.inflate(layoutResourceId,null,false)

@@ -1,4 +1,4 @@
-package com.aconno.hexinputlib.model
+package com.troido.model
 
 open class HexContentObservable {
     private val listeners = mutableListOf<HexContentListener>()

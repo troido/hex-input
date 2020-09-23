@@ -1,4 +1,4 @@
-package com.aconno.hexinputlib.model
+package com.troido.model
 
 interface HexContentListener {
     fun valueInserted(previousState : List<Char>, insertionIndex : Int, insertedValue : Char)
