@@ -1,4 +1,4 @@
-package com.troido.formatter
+package com.troido.hexinput.formatter
 
 import java.lang.StringBuilder
 import kotlin.math.min

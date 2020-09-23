@@ -1,6 +1,6 @@
-package com.troido.formatter
+package com.troido.hexinput.formatter
 
-import com.troido.isHexChar
+import com.troido.hexinput.isHexChar
 import java.util.*
 
 class PrefixedByteHexFormatter : HexFormatter {

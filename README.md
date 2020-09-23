@@ -9,7 +9,7 @@ The library is very simple to use. There are only two steps required to integrat
 For example, add this snippet into you activity xml layout:
 
 ```
-<com.troido.ui.editor.HexEditText
+<com.troido.hexinput.ui.editor.HexEditText
     android:id="@+id/demo_hex_input"
     android:layout_width="match_parent"
     android:layout_height="wrap_content" />
@@ -32,7 +32,7 @@ override fun onCreate(savedInstanceState: Bundle?) {
 The other way is to manually include a `HexKeyboardView` into your activity layout. You can place it wherever you want in your activity layout (it does not need to be attached to the bottom of the screen). For example, add this snippet into your activity xml layout:
 
 ```
-<com.troido.ui.keyboard.HexKeyboardView
+<com.troido.hexinput.ui.keyboard.HexKeyboardView
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"/>
 ```
@@ -73,7 +73,7 @@ demo_hex_input.setFormatter(formatter)
 Or you can achieve the same thing by setting the formatter in an xml file, like this:
 
 ```
-<com.troido.ui.editor.HexEditText
+<com.troido.hexinput.ui.editor.HexEditText
     android:id="@+id/demo_hex_input"
     android:layout_width="match_parent"
     android:layout_height="wrap_content" 

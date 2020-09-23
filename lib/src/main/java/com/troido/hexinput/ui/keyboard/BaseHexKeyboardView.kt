@@ -1,4 +1,4 @@
-package com.troido.ui.keyboard
+package com.troido.hexinput.ui.keyboard
 
 import android.content.Context
 import android.util.AttributeSet
