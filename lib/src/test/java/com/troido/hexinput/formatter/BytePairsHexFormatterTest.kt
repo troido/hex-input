@@ -74,6 +74,14 @@ class BytePairsHexFormatterTest {
     }
 
     @Test
+    fun testFormatValuesWhenNumberOfValuesDivisibleByFour() {
+        val formatter = BytePairsHexFormatter()
+        val formattedContent = formatter.format(listOf('1','2','3','4','5','6','7','8'))
+
+        Assert.assertEquals("1234 5678", formattedContent)
+    }
+
+    @Test
     fun testFormatManyValues() {
         val formatter = BytePairsHexFormatter()
         val formattedContent = formatter.format(listOf('1','2','3','4','5','6','7','8','9','A','B','C'))
@@ -144,6 +152,13 @@ class BytePairsHexFormatterTest {
     }
 
     @Test
+    fun testParseValuesWhenNumberOfValuesDivisibleByFour() {
+        val hex = "A354 289C"
+        val chars = BytePairsHexFormatter().parse(hex)
+        Assert.assertEquals(listOf('A','3','5','4','2','8','9','C'), chars)
+    }
+
+    @Test
     fun testParseSubstringOfFiveValuesWithSpaceAfterThirdValue() {
         val hex = "354 28"
         val chars = BytePairsHexFormatter().parse(hex)
@@ -185,6 +200,13 @@ class BytePairsHexFormatterTest {
         Assert.assertEquals(listOf('2','3','4','5','6','7','8','9','A','B','C','D','E'), chars)
     }
 
+    @Test
+    fun testParseSubstringContainingSpaceOnly() {
+        val hex = " "
+        val chars = BytePairsHexFormatter().parse(hex)
+        Assert.assertEquals(0, chars.size)
+    }
+
     @Test(expected = IncompatibleFormatException::class)
     fun testParseContentWithOneInvalidCharacter() {
         val hex = "25 G8"
@@ -200,6 +222,12 @@ class BytePairsHexFormatterTest {
     @Test(expected = IncompatibleFormatException::class)
     fun testParseContentWithSpacesInWrongPlaces() {
         val hex = "F8 934 59 824D"
+        BytePairsHexFormatter().parse(hex)
+    }
+
+    @Test(expected = IncompatibleFormatException::class)
+    fun testParseContentWithSpacesInWrongPlacesAndInvalidCharacters() {
+        val hex = "F8 9T4 5h 8rOD"
         BytePairsHexFormatter().parse(hex)
     }
 
@@ -219,7 +247,74 @@ class BytePairsHexFormatterTest {
     }
 
     @Test
-    fun testLocateSourceValue() {
+    fun testLocateSourceValueWhenNoValues() {
+        val values = listOf<Char>()
+
+        val formattedValueToSourceValueMap = mapOf(
+            0 to 0
+        )
+
+        testLocateSourceValue(values,formattedValueToSourceValueMap)
+    }
+
+    @Test
+    fun testLocateSourceValueWhenOnlyOneValue() {
+        val values = listOf('A')
+
+        val formattedValueToSourceValueMap = mapOf(
+            0 to 0,
+            1 to 0,
+            2 to 1
+        )
+
+        testLocateSourceValue(values,formattedValueToSourceValueMap)
+    }
+
+    @Test
+    fun testLocateSourceValueWhenOnlyTwoValues() {
+        val values = listOf('A','B')
+
+        val formattedValueToSourceValueMap = mapOf(
+            0 to 0,
+            1 to 1,
+            2 to 2
+        )
+
+        testLocateSourceValue(values,formattedValueToSourceValueMap)
+    }
+
+    @Test
+    fun testLocateSourceValueWhenOnlyThreeValues() {
+        val values = listOf('A','B','C')
+
+        val formattedValueToSourceValueMap = mapOf(
+            0 to 0,
+            1 to 1,
+            2 to 2,
+            3 to 2,
+            4 to 3
+        )
+
+        testLocateSourceValue(values,formattedValueToSourceValueMap)
+    }
+
+    @Test
+    fun testLocateSourceValueWhenOnlyFourValues() {
+        val values = listOf('A','B','C','D')
+
+        val formattedValueToSourceValueMap = mapOf(
+            0 to 0,
+            1 to 1,
+            2 to 2,
+            3 to 3,
+            4 to 4
+        )
+
+        testLocateSourceValue(values,formattedValueToSourceValueMap)
+    }
+
+    @Test
+    fun testLocateSourceValueWhenNumberOfValuesDivisibleByFour() {
         val values = listOf('A','B','C','D','E','F','1','2','3','4','5','6')
 
         val formattedValueToSourceValueMap = mapOf(
@@ -296,6 +391,7 @@ class BytePairsHexFormatterTest {
 
         testLocateSourceValue(values,formattedValueToSourceValueMap)
     }
+
 
 
 
