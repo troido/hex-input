@@ -409,7 +409,7 @@ class BytePairsHexFormatterTest {
     }
 
     @Test
-    fun testLocateFormattedValue() {
+    fun testLocateFormattedValueWhenNumberOfValuesDivisibleByFour() {
         val values = listOf('A','B','C','D','E','F','1','2')
         val sourceValueToFormattedValueMap = mapOf(
             0 to 0,
@@ -427,7 +427,7 @@ class BytePairsHexFormatterTest {
     }
 
     @Test
-    fun locateFormattedValueInBytePairsHexFormatForNumberOfValuesModuloFourEqualsThree() {
+    fun locateFormattedValueWhenNumberOfValuesModuloFourEqualsThree() {
         val values = listOf('A','B','C','D','E','F','2')
         val sourceValueToFormattedValueMap = mapOf(
             0 to 0,
@@ -444,7 +444,7 @@ class BytePairsHexFormatterTest {
     }
 
     @Test
-    fun locateFormattedValueInBytePairsHexFormatForNumberOfValuesModuloFourEqualsTwo() {
+    fun locateFormattedValueWhenNumberOfValuesModuloFourEqualsTwo() {
         val values = listOf('A','B','C','D','E','F')
         val sourceValueToFormattedValueMap = mapOf(
             0 to 0,
@@ -460,7 +460,7 @@ class BytePairsHexFormatterTest {
     }
 
     @Test
-    fun locateFormattedValueInBytePairsHexFormatForNumberOfValuesModuloFourEqualsOne() {
+    fun locateFormattedValueWhenNumberOfValuesModuloFourEqualsOne() {
         val values = listOf('A','B','C','D','E')
 
         val sourceValueToFormattedValueMap = mapOf(
