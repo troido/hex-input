@@ -133,28 +133,32 @@ class MacAddressHexFormatterTest {
         Assert.assertEquals(0, chars?.size)
     }
 
-    @Test(expected = IncompatibleFormatException::class)
+    @Test
     fun testParseContentWithOneInvalidCharacter() {
         val hex = "25:G8"
-        MacAddressHexFormatter().parse(hex)
+        val chars = MacAddressHexFormatter().parse(hex)
+        Assert.assertEquals(null, chars)
     }
 
-    @Test(expected = IncompatibleFormatException::class)
+    @Test
     fun testParseContentWithMultipleInvalidCharacters() {
         val hex = "2R:GQ:67:j8"
-        MacAddressHexFormatter().parse(hex)
+        val chars = MacAddressHexFormatter().parse(hex)
+        Assert.assertEquals(null, chars)
     }
 
-    @Test(expected = IncompatibleFormatException::class)
+    @Test
     fun testParseContentWithSeparatorsInWrongPlaces() {
         val hex = "F8:934:59:824D"
-        MacAddressHexFormatter().parse(hex)
+        val chars = MacAddressHexFormatter().parse(hex)
+        Assert.assertEquals(null, chars)
     }
 
-    @Test(expected = IncompatibleFormatException::class)
+    @Test
     fun testParseContentWithSeparatorsInWrongPlacesAndInvalidCharacters() {
         val hex = "F8:9g4:5z:8H4D"
-        MacAddressHexFormatter().parse(hex)
+        val chars = MacAddressHexFormatter().parse(hex)
+        Assert.assertEquals(null, chars)
     }
 
 

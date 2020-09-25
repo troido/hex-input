@@ -207,28 +207,32 @@ class BytePairsHexFormatterTest {
         Assert.assertEquals(0, chars?.size)
     }
 
-    @Test(expected = IncompatibleFormatException::class)
+    @Test
     fun testParseContentWithOneInvalidCharacter() {
         val hex = "25 G8"
-        BytePairsHexFormatter().parse(hex)
+        val chars = BytePairsHexFormatter().parse(hex)
+        Assert.assertEquals(null, chars)
     }
 
-    @Test(expected = IncompatibleFormatException::class)
+    @Test
     fun testParseContentWithMultipleInvalidCharacters() {
         val hex = "2R GQ67 j8"
-        BytePairsHexFormatter().parse(hex)
+        val chars = BytePairsHexFormatter().parse(hex)
+        Assert.assertEquals(null, chars)
     }
 
-    @Test(expected = IncompatibleFormatException::class)
+    @Test
     fun testParseContentWithSpacesInWrongPlaces() {
         val hex = "F8 934 59 824D"
-        BytePairsHexFormatter().parse(hex)
+        val chars = BytePairsHexFormatter().parse(hex)
+        Assert.assertEquals(null, chars)
     }
 
-    @Test(expected = IncompatibleFormatException::class)
+    @Test
     fun testParseContentWithSpacesInWrongPlacesAndInvalidCharacters() {
         val hex = "F8 9T4 5h 8rOD"
-        BytePairsHexFormatter().parse(hex)
+        val chars = BytePairsHexFormatter().parse(hex)
+        Assert.assertEquals(null, chars)
     }
 
 

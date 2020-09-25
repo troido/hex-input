@@ -201,34 +201,39 @@ class PrefixedByteHexFormatterTest {
         Assert.assertEquals(0, chars?.size)
     }
 
-    @Test(expected = IncompatibleFormatException::class)
+    @Test
     fun testParseContentWithOneInvalidCharacter() {
         val hex = "0x8G"
-        PrefixedByteHexFormatter().parse(hex)
+        val chars = PrefixedByteHexFormatter().parse(hex)
+        Assert.assertEquals(null,chars)
     }
 
-    @Test(expected = IncompatibleFormatException::class)
+    @Test
     fun testParseContentWithMultipleInvalidCharacters() {
         val hex = "0x8T 0xHJ 0x5J"
-        PrefixedByteHexFormatter().parse(hex)
+        val chars = PrefixedByteHexFormatter().parse(hex)
+        Assert.assertEquals(null,chars)
     }
 
-    @Test(expected = IncompatibleFormatException::class)
+    @Test
     fun testParseContentWithoutPrefixes() {
         val hex = "8C 9A BC 34"
-        PrefixedByteHexFormatter().parse(hex)
+        val chars = PrefixedByteHexFormatter().parse(hex)
+        Assert.assertEquals(null,chars)
     }
 
-    @Test(expected = IncompatibleFormatException::class)
+    @Test
     fun testParseContentWithInvalidPrefixes() {
         val hex = "0j8C 0j9A 0jBC 0j34"
-        PrefixedByteHexFormatter().parse(hex)
+        val chars = PrefixedByteHexFormatter().parse(hex)
+        Assert.assertEquals(null,chars)
     }
 
-    @Test(expected = IncompatibleFormatException::class)
+    @Test
     fun testParseContentWithSpacesAtWrongPlaces() {
         val hex = "0x8 C 0x9 A0xBC 0x 34"
-        PrefixedByteHexFormatter().parse(hex)
+        val chars = PrefixedByteHexFormatter().parse(hex)
+        Assert.assertEquals(null,chars)
     }
 
 

@@ -75,16 +75,18 @@ class PlainValuesHexFormatterTest {
         Assert.assertEquals(listOf('A','3','5','4','7','8'), chars)
     }
 
-    @Test(expected = IncompatibleFormatException::class)
+    @Test
     fun testParseContentWithOneInvalidCharacter() {
         val hex = "25G8"
-        PlainValuesHexFormatter().parse(hex)
+        val chars = PlainValuesHexFormatter().parse(hex)
+        Assert.assertEquals(null, chars)
     }
 
-    @Test(expected = IncompatibleFormatException::class)
+    @Test
     fun testParseContentWithMultipleInvalidCharacters() {
         val hex = "2RGQ67j8"
-        PlainValuesHexFormatter().parse(hex)
+        val chars = PlainValuesHexFormatter().parse(hex)
+        Assert.assertEquals(null, chars)
     }
 
 
