@@ -1,4 +1,4 @@
-package com.aconno.hexinputlib.formatter
+package com.troido.hexinput.formatter
 
 /**
  * Signals that the format of string being parsed is not compatible with the expected format.

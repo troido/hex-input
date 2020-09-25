@@ -1,7 +1,7 @@
-package com.aconno.hexinputlib.model
+package com.troido.hexinput.model
 
-import com.aconno.hexinputlib.HexUtils
-import com.aconno.hexinputlib.isHexChar
+import com.troido.hexinput.HexUtils
+import com.troido.hexinput.isHexChar
 import java.lang.IllegalArgumentException
 import kotlin.math.max
 import kotlin.math.min

@@ -1,4 +1,4 @@
-package com.aconno.hexinputlib.formatter
+package com.troido.hexinput.formatter
 
 /**
  * A formatter used to format content of HexEditText view. It's main purpose is to translate a list of

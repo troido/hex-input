@@ -1,11 +1,11 @@
-package com.aconno.hexinputlib
+package com.troido.hexinput
 
 import android.app.Activity
 import android.os.Handler
 import android.view.View
 import android.view.ViewGroup
 import android.view.inputmethod.InputMethodManager
-import com.aconno.hexinputlib.ui.keyboard.BaseHexKeyboardView
+import com.troido.hexinput.ui.keyboard.BaseHexKeyboardView
 import java.lang.IllegalArgumentException
 import java.lang.IllegalStateException
 

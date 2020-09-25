@@ -1,12 +1,12 @@
-package com.aconno.hexinputlib
+package com.troido.hexinput
 
 import android.app.Activity
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ScrollView
 import androidx.constraintlayout.widget.ConstraintSet
-import com.aconno.hexinputlib.ui.keyboard.BaseHexKeyboardView
-import com.aconno.hexinputlib.ui.keyboard.HexKeyboardView
+import com.troido.hexinput.ui.keyboard.BaseHexKeyboardView
+import com.troido.hexinput.ui.keyboard.HexKeyboardView
 
 /**
  * Creates a layout that contains layout inflated from layout resource specified by [layoutResourceId]
@@ -22,7 +22,7 @@ import com.aconno.hexinputlib.ui.keyboard.HexKeyboardView
  * not important if the part of the inflated layout is inaccessible when the [HexKeyboardView] is
  * displayed.
  *
- * The purpose of this method is to be able to provide [HexKeyboardView] for [HexEditText][com.aconno.hexinputlib.ui.editor.HexEditText]
+ * The purpose of this method is to be able to provide [HexKeyboardView] for [HexEditText][com.troido.hexinput.ui.editor.HexEditText]
  * without adding it manually into activity content view. But since this method wraps the specified layout
  * into a new layout, this could lead do some performance issues or maybe even to some bugs, so use this
  * method with caution. This method is recommended to be used only for simple layouts, but if there is

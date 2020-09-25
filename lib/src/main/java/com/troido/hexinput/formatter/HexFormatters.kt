@@ -1,4 +1,5 @@
-package com.aconno.hexinputlib.formatter
+package com.troido.hexinput.formatter
+
 
 /**
  *  An object containing util methods for working with the set of hex formatters contained in this library.

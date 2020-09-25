@@ -1,4 +1,4 @@
-package com.aconno.hexinputlib.ui.editor
+package com.troido.hexinput.ui.editor
 
 import android.content.Context
 import android.text.Editable
@@ -6,20 +6,20 @@ import android.text.TextWatcher
 import android.util.AttributeSet
 import android.view.View.OnFocusChangeListener
 import androidx.core.widget.addTextChangedListener
-import com.aconno.hexinputlib.HexEditController
-import com.aconno.hexinputlib.KeyboardManager
-import com.aconno.hexinputlib.formatter.HexFormatter
-import com.aconno.hexinputlib.formatter.HexFormatters
-import com.aconno.hexinputlib.model.HexContentModel
+import com.troido.hexinput.HexEditController
+import com.troido.hexinput.KeyboardManager
 import com.troido.hexinput.R
+import com.troido.hexinput.formatter.HexFormatter
+import com.troido.hexinput.formatter.HexFormatters
+import com.troido.hexinput.model.HexContentModel
 
 /**
  * A special type of EditText view intended for input of hexadecimal content. It automatically formats
  * it's content using the specified formatter or a default one. It also provides method that enables
  * setting content as formatted string, that gets automatically parsed and formatted using the specified
  * formatter, and as array of bytes. What's more, it is connected to a hexadecimal keyboard that is specialised
- * for input of hex content (see [HexKeyboardView][com.aconno.hexinputlib.ui.keyboard.HexKeyboardView]).
- * But, to be able to use this view, there has to be a [HexKeyboardView][com.aconno.hexinputlib.ui.keyboard.HexKeyboardView]
+ * for input of hex content (see [HexKeyboardView][com.troido.hexinput.ui.keyboard.HexKeyboardView]).
+ * But, to be able to use this view, there has to be a [HexKeyboardView][com.troido.hexinput.ui.keyboard.HexKeyboardView]
  * added into the content view of an activity that uses this view. It can be placed anywhere in the content
  * view, it will be automatically found and used when this view gets focus.
  */
@@ -100,7 +100,7 @@ class HexEditText(context: Context, attributeSet: AttributeSet) : androidx.appco
      *
      * @param formatter a hex formatter to be used to format this view's content.
      */
-    fun setFormatter(formatter :  HexFormatter) {
+    fun setFormatter(formatter : HexFormatter) {
         controller.formatter = formatter
     }
 

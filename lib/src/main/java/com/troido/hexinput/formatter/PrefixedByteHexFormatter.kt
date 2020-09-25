@@ -1,6 +1,6 @@
-package com.aconno.hexinputlib.formatter
+package com.troido.hexinput.formatter
 
-import com.aconno.hexinputlib.isHexChar
+import com.troido.hexinput.isHexChar
 import java.lang.IllegalArgumentException
 import java.util.*
 

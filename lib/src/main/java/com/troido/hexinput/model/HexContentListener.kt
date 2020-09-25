@@ -1,4 +1,4 @@
-package com.aconno.hexinputlib.model
+package com.troido.hexinput.model
 
 /**
  * A listener that listens to [HexContentModel] changes.

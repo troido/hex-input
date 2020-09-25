@@ -1,4 +1,4 @@
-package com.aconno.hexinputlib.ui.keyboard
+package com.troido.hexinput.ui.keyboard
 
 import android.annotation.SuppressLint
 import android.content.Context

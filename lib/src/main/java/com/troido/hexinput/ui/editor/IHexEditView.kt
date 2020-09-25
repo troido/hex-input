@@ -1,4 +1,4 @@
-package com.aconno.hexinputlib.ui.editor
+package com.troido.hexinput.ui.editor
 
 /**
  * An interface that represents an input view specialised for input of hexadecimal content. Contains

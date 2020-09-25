@@ -1,4 +1,4 @@
-package com.aconno.hexinputlib.model
+package com.troido.hexinput.model
 
 /**
  * Represents a hex content holder providing methods for [HexContentListener] listeners to subscribe

@@ -1,4 +1,4 @@
-package com.aconno.hexinputlib.formatter
+package com.troido.hexinput.formatter
 
 import java.lang.IllegalArgumentException
 import java.lang.StringBuilder

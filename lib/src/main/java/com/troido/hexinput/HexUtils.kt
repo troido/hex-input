@@ -1,11 +1,11 @@
-package com.aconno.hexinputlib
+package com.troido.hexinput
 
 import java.lang.IllegalArgumentException
 import kotlin.math.ceil
 
 /**
  * An object providing some util methods for dealing with hexadecimal content. This methods are
- * intended to be used for implementation of a [HexFormatter][com.aconno.hexinputlib.formatter.HexFormatter]
+ * intended to be used for implementation of a [HexFormatter][com.troido.hexinput.formatter.HexFormatter]
  * (e.g. when implementing a custom formatter) but they could also be used anywhere else if there is a need to.
  */
 object HexUtils {
