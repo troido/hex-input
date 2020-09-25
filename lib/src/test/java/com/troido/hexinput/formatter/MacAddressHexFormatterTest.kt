@@ -67,7 +67,7 @@ class MacAddressHexFormatterTest {
     fun testParseEmptyString() {
         val hex = ""
         val chars = MacAddressHexFormatter().parse(hex)
-        Assert.assertEquals(0, chars.size)
+        Assert.assertEquals(0, chars?.size)
     }
 
     @Test
@@ -130,7 +130,7 @@ class MacAddressHexFormatterTest {
     fun testParseSubstringContainingSeparatorOnly() {
         val hex = ":"
         val chars = MacAddressHexFormatter().parse(hex)
-        Assert.assertEquals(0, chars.size)
+        Assert.assertEquals(0, chars?.size)
     }
 
     @Test(expected = IncompatibleFormatException::class)

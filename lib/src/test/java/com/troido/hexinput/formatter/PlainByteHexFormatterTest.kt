@@ -58,7 +58,7 @@ class PlainByteHexFormatterTest {
     fun testParseEmptyString() {
         val hex = ""
         val chars = PlainByteHexFormatter().parse(hex)
-        Assert.assertEquals(0, chars.size)
+        Assert.assertEquals(0, chars?.size)
     }
 
     @Test

@@ -58,7 +58,7 @@ class PrefixedByteHexFormatterTest {
     fun testParseEmptyString() {
         val hex = ""
         val chars = PrefixedByteHexFormatter().parse(hex)
-        Assert.assertEquals(0, chars.size)
+        Assert.assertEquals(0, chars?.size)
     }
 
     @Test
@@ -156,7 +156,7 @@ class PrefixedByteHexFormatterTest {
     fun testParseSubstringOfOneByteEndingWithX() {
         val hex = "0x"
         val chars = PrefixedByteHexFormatter().parse(hex)
-        Assert.assertEquals(0, chars.size)
+        Assert.assertEquals(0, chars?.size)
     }
 
     @Test
@@ -198,7 +198,7 @@ class PrefixedByteHexFormatterTest {
     fun testParseSubstringContainingXOnly() {
         val hex = "x"
         val chars = PrefixedByteHexFormatter().parse(hex)
-        Assert.assertEquals(0, chars.size)
+        Assert.assertEquals(0, chars?.size)
     }
 
     @Test(expected = IncompatibleFormatException::class)

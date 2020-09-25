@@ -99,7 +99,7 @@ class BytePairsHexFormatterTest {
     fun testParseEmptyString() {
         val hex = ""
         val chars = BytePairsHexFormatter().parse(hex)
-        Assert.assertEquals(0, chars.size)
+        Assert.assertEquals(0, chars?.size)
     }
 
     @Test
@@ -204,7 +204,7 @@ class BytePairsHexFormatterTest {
     fun testParseSubstringContainingSpaceOnly() {
         val hex = " "
         val chars = BytePairsHexFormatter().parse(hex)
-        Assert.assertEquals(0, chars.size)
+        Assert.assertEquals(0, chars?.size)
     }
 
     @Test(expected = IncompatibleFormatException::class)
