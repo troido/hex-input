@@ -12,7 +12,7 @@ import io.reactivex.disposables.Disposable
 import java.util.*
 import java.util.concurrent.TimeUnit
 
-class HexEditController(private val view : IHexEditView) : HexContentListener,
+internal class HexEditController(private val view : IHexEditView) : HexContentListener,
     KeyboardListener {
     var model : HexContentModel = HexContentModel()
     var formatter = HexFormatters.getDefaultFormatter()
@@ -39,14 +39,11 @@ class HexEditController(private val view : IHexEditView) : HexContentListener,
 
     fun onViewContentChanged() {
         val content = view.getContent()
-        val parsedValues = try {
-            formatter.parse(view.getContent())
-        } catch (ex : IncompatibleFormatException) {
-            loadValuesFromText(content)
-            return
-        }
+        val parsedValues = formatter.parse(view.getContent())
 
-        if(!formatter.areValuesDerivableFrom(parsedValues,model.getValues())) {
+        if(parsedValues == null) {
+            loadValuesFromText(content)
+        } else if(!formatter.areValuesDerivableFrom(parsedValues,model.getValues())) {
             model.setValues(parsedValues)
         }
     }
@@ -150,14 +147,6 @@ class HexEditController(private val view : IHexEditView) : HexContentListener,
 
     fun loadValuesFromByteArray(bytes: ByteArray) {
         model.setValues(bytes)
-    }
-
-    fun cutSelection() {
-        removeSelectedText()
-    }
-
-    fun paste(clipboardText: String) {
-        insertValuesFromText(clipboardText,view.getSelectionStart())
     }
 
     private fun insertValuesFromText(text: String, insertAtIndex : Int) : Boolean {
