@@ -34,7 +34,7 @@ class HexContentModel : HexContentObservable() {
      * @param value a hex value to insert
      */
     fun insertValue(index : Int, value : Char) {
-        if(index < 0 || index >= values.size) {
+        if(index < 0 || index > values.size) {
             throw IllegalArgumentException("Index out of bounds, expected index in range [0,${values.lastIndex}], given: $index")
         }
         if(!value.isHexChar()) {
@@ -57,7 +57,7 @@ class HexContentModel : HexContentObservable() {
      * @param values hex values to insert
      */
     fun insertValues(index : Int, values : List<Char>) {
-        if(index < 0 || index >= values.size) {
+        if(index < 0 || index > values.size) {
             throw IllegalArgumentException("Index out of bounds, expected index in range [0,${values.lastIndex}], given: $index")
         }
 
@@ -99,11 +99,11 @@ class HexContentModel : HexContentObservable() {
      * @param index index of value to remove
      */
     fun removeValue(index : Int) {
+        if(index < 0 || index > values.lastIndex) return
+
         if(index < 0 || index >= values.size) {
             throw IllegalArgumentException("Index out of bounds, expected index in range [0,${values.lastIndex}], given: $index")
         }
-
-        if(index < 0 || index > values.lastIndex) return
 
         val previousState = getValues()
 
@@ -119,14 +119,14 @@ class HexContentModel : HexContentObservable() {
      * @param endIndex index of the last value to remove incremented by one
      */
     fun removeRange(startIndex : Int, endIndex : Int) {
+        if(startIndex == endIndex) return
+
         if(startIndex < 0 || startIndex > values.size) {
             throw IllegalArgumentException("Index out of bounds, expected index in range [0,${values.size}], given: $startIndex")
         }
         if(endIndex < 0 || endIndex > values.size) {
             throw IllegalArgumentException("Index out of bounds, expected index in range [0,${values.size}], given: $endIndex")
         }
-
-        if(startIndex == endIndex) return
 
         val previousState = getValues()
 
