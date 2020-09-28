@@ -21,6 +21,10 @@ class HexContentModel : HexContentObservable() {
         }
 
         this.valuesLimit = limit
+
+        if(values.size > valuesLimit) {
+            setValues(values.toList())
+        }
     }
 
     /**
