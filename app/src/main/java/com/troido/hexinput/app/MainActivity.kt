@@ -53,6 +53,6 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun applyLimit(limit : Int) {
-        // TODO
+        demo_hex_input.setHexValuesLimit(limit)
     }
 }
