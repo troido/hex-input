@@ -15,6 +15,17 @@ class HexContentModel : HexContentObservable() {
     private val values : MutableList<Char> = mutableListOf()
     private var valuesLimit : Int = Int.MAX_VALUE
 
+    /**
+     * Sets the specified values limit. This limit represents the maximum number of hex values that
+     * can be contained in this model.
+     *
+     * If, at the moment of setting a limit, number of values in the model exceeds the limit,
+     * all extra values are automatically removed from the model. For example,
+     * if there are values [1,2,3,A,B,C] in the model and then this method gets called with a value of 4
+     * as the values limit, values B and C get removed, so the new state of the model is [1,2,3,A].
+     *
+     * @param limit values limit
+     */
     fun setValuesLimit(limit : Int) {
         if(limit < 0) {
             throw IllegalArgumentException("Bad values limit: $limit")
