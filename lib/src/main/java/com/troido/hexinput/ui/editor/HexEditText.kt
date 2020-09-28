@@ -134,7 +134,7 @@ class HexEditText(context: Context, attributeSet: AttributeSet) : androidx.appco
         addTextChangedListener(afterTextChanged = {afterTextChanges(getContent())})
     }
 
-    inner class HexTextWatcher : TextWatcher {
+    private inner class HexTextWatcher : TextWatcher {
         private lateinit var contentBeforeChange : String
         private var changeStartIndex = 0
         private var charsReplaced = 0
