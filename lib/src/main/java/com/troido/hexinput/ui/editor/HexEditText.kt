@@ -22,6 +22,9 @@ import com.troido.hexinput.model.HexContentModel
  * But, to be able to use this view, there has to be a [HexKeyboardView][com.troido.hexinput.ui.keyboard.HexKeyboardView]
  * added into the content view of an activity that uses this view. It can be placed anywhere in the content
  * view, it will be automatically found and used when this view gets focus.
+ *
+ * To customize this view using XML attributes, use [R.styleable.HexEditText_hexValuesLimit] attribute to set a
+ * hex values limit, or [R.styleable.HexEditText_formatter] attribute to set a hex formatter.
  */
 class HexEditText(context: Context, attributeSet: AttributeSet) : androidx.appcompat.widget.AppCompatEditText(context,attributeSet),
     IHexEditView {
@@ -126,10 +129,21 @@ class HexEditText(context: Context, attributeSet: AttributeSet) : androidx.appco
         return controller.model.getValuesAsBytes()
     }
 
+    /**
+     * Sets hex values limit to the specified value. See [HexContentModel.valuesLimit] to find out
+     * how exactly does this limit affect to the content of this [HexEditText].
+     *
+     * @param hexValuesLimit hex values limit
+     */
     fun setHexValuesLimit(hexValuesLimit : Int) {
         controller.model.setValuesLimit(hexValuesLimit)
     }
 
+    /**
+     * Specifies an operation to perform after each text change.
+     *
+     * @param afterTextChanges an operation to be performed after each text change
+     */
     fun doAfterTextChanges(afterTextChanges : ((String) -> Unit)) {
         addTextChangedListener(afterTextChanged = {afterTextChanges(getContent())})
     }
