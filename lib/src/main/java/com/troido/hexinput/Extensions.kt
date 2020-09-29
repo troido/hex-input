@@ -40,6 +40,7 @@ fun Activity.setContentViewWithHexKeyboardAutoAdded(layoutResourceId : Int, wrap
     val activityMainContent= if(wrapContentInScrollView) {
         inflatedLayout.layoutParams = ViewGroup.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT,ViewGroup.LayoutParams.WRAP_CONTENT)
         ScrollView(this).apply {
+            id = View.generateViewId()
             addView(inflatedLayout)
         }
     } else {
@@ -91,10 +92,26 @@ fun Activity.handleBackPressedWithHexKeyboardInContentView() {
     }
 }
 
+/**
+ * Gets a [BaseHexKeyboardView] from the [Activity] content view or throws an [IllegalStateException]
+ * exception if there is no [BaseHexKeyboardView].
+ *
+ * @receiver an activity that contains a hex keyboard view in its content view
+ * @return a [BaseHexKeyboardView] contained in the content view of the receiver
+ * @throws IllegalStateException if there is no [BaseHexKeyboardView] in the content view of the receiver
+ *
+ */
 fun Activity.getHexKeyboardView() : BaseHexKeyboardView {
     return KeyboardManager.findHexKeyboardView(findViewById(android.R.id.content))
 }
 
+/**
+ * Checks if a hex keyboard is displayed in the [Activity].
+ *
+ * @receiver an activity that contains a hex keyboard view in its content view
+ * @return true if a hex keyboard is displayed, false otherwise
+ * @throws IllegalStateException if there is no [BaseHexKeyboardView] in the content view of the receiver
+ */
 fun Activity.isHexKeyboardDisplayed() : Boolean {
     return getHexKeyboardView().visibility == View.VISIBLE
 }
