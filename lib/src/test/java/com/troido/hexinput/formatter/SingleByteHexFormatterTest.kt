@@ -144,4 +144,139 @@ class SingleByteHexFormatterTest {
         val chars = SingleByteHexFormatter().parse(hex)
         Assert.assertEquals(null,chars)
     }
+
+
+
+    //////////////////////////////////////////////////////////////////////////////
+    // L O C A T I N G    S O U R C E    V A L U E    T E S T S /////////////////
+    ////////////////////////////////////////////////////////////////////////////
+
+    private fun testLocateSourceValue(values : List<Char>,formattedValueToSourceValueMap : Map<Int,Int>) {
+        val formatter = SingleByteHexFormatter()
+        for(formattedValueToSourceValue in formattedValueToSourceValueMap) {
+            val expectedResult = formattedValueToSourceValue.value
+            val actualResult = formatter.locateSourceValue(values,formattedValueToSourceValue.key)
+            Assert.assertEquals("Formatted value index: ${formattedValueToSourceValue.key}",expectedResult, actualResult)
+        }
+    }
+
+    @Test
+    fun testLocateSourceValueWhenNoValues() {
+        val values = listOf<Char>()
+
+        val formattedValueToSourceValueMap = mapOf(
+            0 to 0
+        )
+
+        testLocateSourceValue(values,formattedValueToSourceValueMap)
+    }
+
+    @Test
+    fun testLocateSourceValueWhenOnlyOneValue() {
+        val values = listOf('A')
+
+        val formattedValueToSourceValueMap = mapOf(
+            0 to 0,
+            1 to 0,
+            2 to 1
+        )
+
+        testLocateSourceValue(values,formattedValueToSourceValueMap)
+    }
+
+    @Test
+    fun testLocateSourceValueWhenTwoValues() {
+        val values = listOf('A','B')
+
+        val formattedValueToSourceValueMap = mapOf(
+            0 to 0,
+            1 to 1,
+            2 to 2
+        )
+
+        testLocateSourceValue(values,formattedValueToSourceValueMap)
+    }
+
+    @Test
+    fun testLocateSourceValueWhenEvenNumberOfValues() {
+        val values = listOf('A','B','1','2','3','4')
+
+        val formattedValueToSourceValueMap = mapOf(
+            0 to 0,
+            1 to 1,
+            2 to 2,
+            3 to 2,
+            4 to 3,
+            5 to 4,
+            6 to 4,
+            7 to 5,
+            8 to 6
+        )
+
+        testLocateSourceValue(values,formattedValueToSourceValueMap)
+    }
+
+    @Test
+    fun testLocateSourceValueWhenOddNumberOfValues() {
+        val values = listOf('A','B','1','2','3')
+
+        val formattedValueToSourceValueMap = mapOf(
+            0 to 0,
+            1 to 1,
+            2 to 2,
+            3 to 2,
+            4 to 3,
+            5 to 4,
+            6 to 4,
+            7 to 4,
+            8 to 5
+        )
+
+        testLocateSourceValue(values,formattedValueToSourceValueMap)
+    }
+
+
+    //////////////////////////////////////////////////////////////////////////////
+    // L O C A T I N G    F O R M A T T E D    V A L U E    T E S T S ///////////
+    ////////////////////////////////////////////////////////////////////////////
+
+    private fun testLocateFormattedValue(values : List<Char>,sourceValueToFormattedValueMap : Map<Int,Int>) {
+        val formatter = SingleByteHexFormatter()
+        for(sourceValueToFormattedValue in sourceValueToFormattedValueMap) {
+            val expectedResult = sourceValueToFormattedValue.value
+            val actualResult = formatter.locateFormattedValue(values,sourceValueToFormattedValue.key)
+            Assert.assertEquals("Source value index: ${sourceValueToFormattedValue.key}",expectedResult, actualResult)
+        }
+    }
+
+    @Test
+    fun testLocateFormattedValueWhenEvenNumberOfValues() {
+        val values = listOf('A','B','1','2','3','4')
+        val sourceValueToFormattedValueMap = mapOf(
+            0 to 0,
+            1 to 1,
+            2 to 3,
+            3 to 4,
+            4 to 6,
+            5 to 7,
+            6 to 8
+        )
+
+        testLocateFormattedValue(values,sourceValueToFormattedValueMap)
+    }
+
+    @Test
+    fun locateFormattedValueWhenOddNumberOfValues() {
+        val values = listOf('A','B','1','2','3')
+        val sourceValueToFormattedValueMap = mapOf(
+            0 to 0,
+            1 to 1,
+            2 to 3,
+            3 to 4,
+            4 to 7,
+            5 to 8,
+        )
+
+        testLocateFormattedValue(values,sourceValueToFormattedValueMap)
+    }
 }
