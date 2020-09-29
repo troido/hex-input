@@ -120,6 +120,15 @@ object KeyboardManager {
         inputMethodManager.hideSoftInputFromWindow(viewToHideFrom.windowToken,0)
     }
 
+    /**
+     * Sets hex keyboard show delay to the specified value. It is set to 500 milliseconds by default.
+     * This delay is set so that there is enough time for the system keyboard to close before the hex
+     * keyboard gets displayed. This delay should be set to 0 milliseconds only if the system keyboard
+     * is not used in an [Activity] that is currently running - so that there is no possibility for the
+     * hex and the system keyboard to be displayed at the same time.
+     *
+     * @param delayMillis delay time in milliseconds
+     */
     fun setHexKeyboardShowDelay(delayMillis : Long) {
         if(delayMillis < 0) {
             throw IllegalArgumentException("Bad delay: $delayMillis")

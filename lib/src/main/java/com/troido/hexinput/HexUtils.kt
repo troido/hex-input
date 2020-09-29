@@ -58,6 +58,14 @@ object HexUtils {
         return values.flatMap { String.format("%02X",it).toList() }
     }
 
+    /**
+     * Verifies that the specified list of characters contain only hex values. It throws an
+     * [IllegalArgumentException] if there is a non-hex value in the list.
+     *
+     * @param hexValues list of values to be verified
+     * @throws IllegalArgumentException if the verification fails, i.e. if there is a non-hex value in the list
+     *
+     */
     fun verifyHexValues(hexValues: List<Char>) {
         if(hexValues.any { !it.toUpperCase().isHexChar() }) {
             throw IllegalArgumentException("Expected a list of hex values, received: $hexValues")
