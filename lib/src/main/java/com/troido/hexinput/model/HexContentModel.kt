@@ -68,7 +68,7 @@ class HexContentModel : HexContentObservable() {
      * @param values hex values to insert
      */
     fun insertValues(index : Int, values : List<Char>) {
-        if(index < 0 || index > values.size) {
+        if(index < 0 || index > this.values.size) {
             throw IllegalArgumentException("Index out of bounds, expected index in range [0,${values.lastIndex}], given: $index")
         }
 
@@ -111,10 +111,6 @@ class HexContentModel : HexContentObservable() {
      */
     fun removeValue(index : Int) {
         if(index < 0 || index > values.lastIndex) return
-
-        if(index < 0 || index >= values.size) {
-            throw IllegalArgumentException("Index out of bounds, expected index in range [0,${values.lastIndex}], given: $index")
-        }
 
         val previousState = getValues()
 
