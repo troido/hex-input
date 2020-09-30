@@ -246,18 +246,4 @@ class HexEditControllerTest {
         Mockito.verify(viewMock,Mockito.atLeast(1)).setSelection(6,6)
     }
 
-    @Test
-    fun testOnValuesReplaced() {
-        val viewMock = Mockito.mock(IHexEditView::class.java)
-        Mockito.`when`(viewMock.getContent()).thenReturn("1234 56")
-
-        val values = listOf('1','2','3','4','5','6')
-
-        val controller = HexEditController(viewMock)
-        controller.formatter = BytePairsHexFormatter()
-        controller.model.setValues(values)
-
-        Mockito.verify(viewMock,Mockito.atLeast(1)).updateContent("1206")
-        Mockito.verify(viewMock,Mockito.times(1)).setSelection(3,3)
-    }
 }
