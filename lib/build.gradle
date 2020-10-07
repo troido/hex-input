@@ -1,6 +1,11 @@
 apply plugin: 'com.android.library'
 apply plugin: 'kotlin-android'
 apply plugin: 'kotlin-android-extensions'
+apply plugin: 'maven-publish'
+
+ext.getOutputName = {
+    return "hex-input-${generateVersionName()}.aar"
+}
 
 android {
     compileSdkVersion 29
@@ -9,8 +14,8 @@ android {
     defaultConfig {
         minSdkVersion 21
         targetSdkVersion 29
-        versionCode 1
-        versionName "1.0"
+        versionCode generateVersionCode()
+        versionName generateVersionName()
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
         consumerProguardFiles "consumer-rules.pro"
@@ -22,19 +27,74 @@ android {
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
         }
     }
+
+    compileOptions {
+        sourceCompatibility = JavaVersion.VERSION_1_8
+        targetCompatibility = JavaVersion.VERSION_1_8
+    }
+
+    kotlinOptions {
+        jvmTarget = JavaVersion.VERSION_1_8
+    }
+
+    libraryVariants.all { variant ->
+        variant.outputs.all {
+            outputFileName = getOutputName()
+        }
+    }
 }
 
 dependencies {
     implementation fileTree(dir: "libs", include: ["*.jar"])
-    implementation "org.jetbrains.kotlin:kotlin-stdlib:$kotlin_version"
-    implementation 'androidx.core:core-ktx:1.1.0'
-    implementation 'androidx.appcompat:appcompat:1.1.0'
-    implementation 'androidx.constraintlayout:constraintlayout:1.1.3'
-    implementation 'io.reactivex.rxjava2:rxkotlin:2.3.0'
-    implementation 'io.reactivex.rxjava2:rxandroid:2.1.1'
-    testImplementation 'junit:junit:4.12'
-    testImplementation group: 'org.mockito', name: 'mockito-core', version: '3.3.0'
-    androidTestImplementation 'androidx.test.ext:junit:1.1.1'
-    androidTestImplementation 'androidx.test.espresso:espresso-core:3.2.0'
 
+    implementation "org.jetbrains.kotlin:kotlin-stdlib:$kotlin_version"
+
+    implementation 'androidx.core:core-ktx:1.3.1'
+    implementation 'androidx.appcompat:appcompat:1.2.0'
+    implementation 'androidx.constraintlayout:constraintlayout:2.0.1'
+
+    implementation 'io.reactivex.rxjava2:rxkotlin:2.4.0'
+    implementation 'io.reactivex.rxjava2:rxandroid:2.1.1'
+
+    testImplementation 'junit:junit:4.13'
+    testImplementation 'org.mockito:mockito-core:3.3.3'
+    androidTestImplementation 'androidx.test.ext:junit:1.1.2'
+    androidTestImplementation 'androidx.test.espresso:espresso-core:3.3.0'
+}
+
+task sourceJar(type: Jar) {
+    from android.sourceSets.main.java.srcDirs
+    classifier 'sources'
+}
+
+publishing {
+    publications {
+        maven(MavenPublication) {
+            groupId "com.troido.hexinput"
+            artifactId "hex-input"
+            version generateVersionName()
+            artifact(sourceJar)
+            artifact("$buildDir/outputs/aar/${getOutputName()}")
+            pom.withXml {
+                def dependenciesNode = asNode().appendNode('dependencies')
+                configurations.api.allDependencies.each {
+                    def dependencyNode = dependenciesNode.appendNode('dependency')
+                    dependencyNode.appendNode('groupId', it.group)
+                    dependencyNode.appendNode('artifactId', it.name)
+                    dependencyNode.appendNode('version', it.version)
+                }
+            }
+        }
+    }
+
+    repositories {
+        maven {
+            name = "GitHubPackages"
+            url = "https://maven.pkg.github.com/troido/hex-input"
+            credentials {
+                username = project.hasProperty('GITHUB_USER') ? GITHUB_USER : ""
+                password = project.hasProperty('GITHUB_ACCESS_TOKEN') ? GITHUB_ACCESS_TOKEN : ""
+            }
+        }
+    }
 }
