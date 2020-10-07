@@ -1,6 +1,11 @@
 apply plugin: 'com.android.library'
 apply plugin: 'kotlin-android'
 apply plugin: 'kotlin-android-extensions'
+apply plugin: 'maven-publish'
+
+ext.getOutputName = {
+    return "hex-input-${generateVersionName()}.aar"
+}
 
 android {
     compileSdkVersion 29
@@ -31,6 +36,12 @@ android {
     kotlinOptions {
         jvmTarget = JavaVersion.VERSION_1_8
     }
+
+    libraryVariants.all { variant ->
+        variant.outputs.all {
+            outputFileName = getOutputName()
+        }
+    }
 }
 
 dependencies {
@@ -49,4 +60,41 @@ dependencies {
     testImplementation 'org.mockito:mockito-core:3.3.3'
     androidTestImplementation 'androidx.test.ext:junit:1.1.2'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.3.0'
+}
+
+task sourceJar(type: Jar) {
+    from android.sourceSets.main.java.srcDirs
+    classifier 'sources'
+}
+
+publishing {
+    publications {
+        maven(MavenPublication) {
+            groupId "com.troido.hexinput"
+            artifactId "hex-input"
+            version generateVersionName()
+            artifact(sourceJar)
+            artifact("$buildDir/outputs/aar/${getOutputName()}")
+            pom.withXml {
+                def dependenciesNode = asNode().appendNode('dependencies')
+                configurations.api.allDependencies.each {
+                    def dependencyNode = dependenciesNode.appendNode('dependency')
+                    dependencyNode.appendNode('groupId', it.group)
+                    dependencyNode.appendNode('artifactId', it.name)
+                    dependencyNode.appendNode('version', it.version)
+                }
+            }
+        }
+    }
+
+    repositories {
+        maven {
+            name = "GitHubPackages"
+            url = "https://maven.pkg.github.com/troido/hex-input"
+            credentials {
+                username = project.hasProperty('GITHUB_USER') ? GITHUB_USER : ""
+                password = project.hasProperty('GITHUB_ACCESS_TOKEN') ? GITHUB_ACCESS_TOKEN : ""
+            }
+        }
+    }
 }
